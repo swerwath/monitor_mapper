@@ -24,6 +24,13 @@ def fetch_ca_air_data():
         resp = response.read()
     return resp
 
+def group_monitor_data(monitors):
+    to_ret = {m.param : [] for m in monitors}
+    for m in monitors:
+        to_ret[m.param].append(m.to_json_dict())
+    return to_ret
+
+
 class MonitorData():
     def __init__(self, api_resp_obj):
         self.latitude = api_resp_obj['Latitude']
@@ -31,6 +38,9 @@ class MonitorData():
         self.param = api_resp_obj['Parameter']
         self.unit = api_resp_obj['Unit']
         self.aqi = api_resp_obj['AQI']
+
+    def to_json_dict(self):
+        return {'AQI' : self.aqi, 'latitude' : self.latitude, 'longitude' : self.longitude, 'param' : self.param}
 
 class AirNowWorker():
     def __init__(self, refresh_minutes=60):
