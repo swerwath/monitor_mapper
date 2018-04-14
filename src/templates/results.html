@@ -6,6 +6,7 @@
 {% block js %}
 <script>lat = {{ lat }}; long = {{ long }};</script>
 <script>m = {{ monitors|tojson }};</script>
+<script type=text/javascript src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
 <script type=text/javascript src="{{ url_for('static', filename='js/results.js') }}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ KEY }}&callback=initMap"></script>
 {% endblock %}
@@ -29,7 +30,7 @@
 
         <div class="col-md-6">
             <div class="jumbotron sidecontent">
-                 <h2>PM<sub>2.5</sub></h1>
+                 <h2 id="pm25">PM<sub>2.5</sub></h1>
 
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -40,7 +41,7 @@
                 </p>
             </div>
             <div class="jumbotron sidecontent">
-                 <h2>NO<sub>2</sub></h1>
+                 <h2 id="no2">NO<sub>2</sub></h1>
 
                 <p>This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -50,7 +51,7 @@
                 <p><a class="btn btn-primary btn-lg">Learn more »</a>
                 </p>
             </div>
-            <div class="jumbotron sidecontent">
+            <div id="so2" class="jumbotron sidecontent">
                  <h2>SO<sub>2</sub></h1>
 
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
@@ -61,7 +62,7 @@
                 <p><a class="btn btn-primary btn-lg">Learn more »</a>
                 </p>
             </div>
-            <div class="jumbotron sidecontent">
+            <div id="ozone" class="jumbotron sidecontent">
                  <h2>Ozone</h1>
 
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
@@ -79,4 +80,42 @@
     <!--/row-->
 </div>
 <!--/.fluid-container-->
+
+<script>
+
+const WP_OFFSET = 30;
+
+var pm25Waypoint = new Waypoint({
+  element: document.getElementById('pm25'),
+  handler: function() {
+    setMarkerSetVisible("PM2.5", monitorMarkerSets);
+  },
+  offset: WP_OFFSET
+});
+
+var no2Waypoint = new Waypoint({
+  element: document.getElementById('no2'),
+  handler: function() {
+    setMarkerSetVisible("NO2", monitorMarkerSets);
+  },
+  offset: WP_OFFSET
+});
+
+var so2Waypoint = new Waypoint({
+  element: document.getElementById('so2'),
+  handler: function() {
+    setMarkerSetVisible("SO2", monitorMarkerSets);
+  },
+  offset: WP_OFFSET
+});
+
+var ozoneWaypoint = new Waypoint({
+  element: document.getElementById('ozone'),
+  handler: function() {
+    setMarkerSetVisible("OZONE", monitorMarkerSets);
+  },
+  offset: WP_OFFSET
+});
+
+</script>
 {% endblock %}

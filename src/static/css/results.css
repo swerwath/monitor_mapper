@@ -20,6 +20,8 @@
 
 .jumbotron {
   height: 100%;
+  margin-top: 15px;
+  height: 95vh;
 }
 
 .container .jumbotron {

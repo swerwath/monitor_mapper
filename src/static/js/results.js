@@ -8,7 +8,7 @@ function initMap() {
   });
 
   constructMonitorMarkerSets(m);
-  setMarkerSetVisible("SO2", monitorMarkerSets);
+  setMarkerSetVisible("PM2.5", monitorMarkerSets);
 }
 
 
@@ -29,15 +29,15 @@ function constructMarkerFromMonitor(monitor) {
   var marker = new google.maps.Marker({
     position: {lat: monitor.latitude, lng: monitor.longitude},
     map: map,
-    visible: true
+    visible: false
   });
   var circle = new google.maps.Circle({
     map: map,
     radius: 15000,   // 15km
     fillColor: getColor(monitor.AQI),
-    visible: true,
     strokeWeight: 0,
     fillOpacity: .2,
+    visible: false
   });
   circle.bindTo('center', marker, 'position');
 
@@ -64,23 +64,25 @@ function constructMonitorMarkerSets(monitorMaps) {
 }
 
 function setMarkerSetVisible(setName, markerSets) {
+  console.log("Setting " + setName);
   for (var key in markerSets) {
-    console.log("Trying " + key)
-    console.log(markerSets[key])
     if (key === setName) {
-      console.log(key + " is true");
+      console.log("eq " + key);
       for (i in markerSets[key]) {
         marker = markerSets[key][i]
-        marker.circle.visible = true;
-        marker.marker.visible = true;
+        console.log(marker);
+        marker.circle.setVisible(true);
+        marker.marker.setVisible(true);
       }
     } else {
+      console.log("neq " + key);
       for (i in markerSets[key]) {
         marker = markerSets[key][i]
-        console.log(marker)
-        marker.circle.visible = false;
-        marker.marker.visible = false;
+        marker.circle.setVisible(false);
+        marker.marker.setVisible(false);
       }
     }
   }
 }
+
+setMarkerSetVisible("PM2.5", monitorMarkerSets);
