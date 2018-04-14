@@ -18,6 +18,10 @@
   height: 100%;
 }
 
+.jumbotron {
+  height: 100%;
+}
+
 .container .jumbotron {
   padding-left: 20px;
   padding-right: 20px;
