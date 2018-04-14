@@ -8,10 +8,9 @@ function getLocation() {
 
 function currLocationSearch(position) {
   argForCall = position.coords.latitude + "," + position.coords.longitude;
-  alert(argForCall)
+  window.location.href = "/results?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
 }
 
-$('#locSearch').on('click', function(event) {
-  event.preventDefault(); // To prevent following the link
-  getLocation();
-});
+function getPlace() {
+  window.location.href = "/place_results?place=" + document.getElementById('search-box').value;
+}

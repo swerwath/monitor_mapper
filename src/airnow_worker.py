@@ -4,9 +4,10 @@ import json
 import datetime
 import urllib.request
 from rtree import index
+from .util import get_distance
 
 API_BASE_URL = "https://airnowapi.org/aq/data/"
-PARAMS = "O3,PM25,PM10,CO,NO2,SO2"
+PARAMS = "O3,PM25,NO2,SO2"
 RETURN_TYPE = "a"
 RETURN_FORMAT = "application/json"
 API_KEY = os.environ['AIRNOW_KEY']
@@ -28,6 +29,20 @@ def group_monitor_data(monitors):
     to_ret = {m.param : [] for m in monitors}
     for m in monitors:
         to_ret[m.param].append(m.to_json_dict())
+    return to_ret
+
+# Takes monitor json dicts, returns monitor json dicts
+def get_nearest_monitor(lat, long, monitors):
+    sorted_monitors = sorted(monitors, key=lambda mon : get_distance(lat, long, mon['latitude'], mon['longitude']))
+    return sorted_monitors[0]
+
+# Map of "SO2" -> [monitor_json_doct, dist]
+def get_nearest_monitor_by_category(lat, long, grouped_monitors):
+    to_ret = {}
+    for category in grouped_monitors:
+        nearest_monitor = get_nearest_monitor(lat, long, grouped_monitors[category])
+        dist = get_distance(lat, long, nearest_monitor['latitude'], nearest_monitor['longitude'])
+        to_ret[category] = [nearest_monitor, dist]
     return to_ret
 
 

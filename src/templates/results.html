@@ -6,6 +6,7 @@
 {% block js %}
 <script>lat = {{ lat }}; long = {{ long }};</script>
 <script>m = {{ monitors|tojson }};</script>
+<script>nm = {{ nearest_monitors|tojson }};</script>
 <script type=text/javascript src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
 <script type=text/javascript src="{{ url_for('static', filename='js/results.js') }}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ KEY }}&callback=initMap"></script>
@@ -31,7 +32,8 @@
         <div class="col-md-6">
             <div class="jumbotron sidecontent">
                  <h2 id="pm25">PM<sub>2.5</sub></h1>
-
+                   <h4 id="pm25-dist">Placeholder</h4>
+                   <h4 id="pm25-read">Placeholder</h4>
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
                     of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
@@ -42,6 +44,8 @@
             </div>
             <div class="jumbotron sidecontent">
                  <h2 id="no2">NO<sub>2</sub></h1>
+                   <h4 id="no2-dist">Placeholder</h4>
+                   <h4 id="no2-read">Placeholder</h4>
 
                 <p>This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -53,6 +57,8 @@
             </div>
             <div id="so2" class="jumbotron sidecontent">
                  <h2>SO<sub>2</sub></h1>
+                   <h4 id="so2-dist">Placeholder</h4>
+                   <h4 id="so2-read">Placeholder</h4>
 
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -64,6 +70,8 @@
             </div>
             <div id="ozone" class="jumbotron sidecontent">
                  <h2>Ozone</h1>
+                   <h4 id="ozone-dist">Placeholder</h4>
+                   <h4 id="ozone-read">Placeholder</h4>
 
                 <p class="sideparagraph">This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -117,5 +125,6 @@ var ozoneWaypoint = new Waypoint({
   offset: WP_OFFSET
 });
 
+fillNearestInfo(nm);
 </script>
 {% endblock %}

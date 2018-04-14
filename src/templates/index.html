@@ -15,10 +15,10 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="input-group input-group-lg">
-          <input type="text" class="form-control" placeholder="Search for your location">
+          <input type="text" class="form-control" onkeydown="if (event.keyCode == 13) { getPlace(); return false; }" placeholder="Search for your location" id="search-box">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" onclick="getLocation();"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
-            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <button class="btn btn-default" type="button" onclick="getPlace();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </span>
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
