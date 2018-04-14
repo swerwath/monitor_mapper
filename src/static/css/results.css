@@ -1,9 +1,19 @@
 #map {
-  height: 400px;
+  height: 100%;
   width: 100%;
   position: fixed;
 }
 
 .sidebar-nav-fixed {
-	width:20%;
+  margin-top: 15px;
+	width:40%;
+  height:95%;
+}
+
+.container {
+  width: 90%;
+}
+
+.well {
+  height: 100%;
 }

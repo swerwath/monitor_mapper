@@ -5,6 +5,7 @@
 
 {% block js %}
 <script>lat = {{ lat }}; long = {{ long }};</script>
+<script>m = {{ monitors|tojson }};</script>
 <script type=text/javascript src="{{ url_for('static', filename='js/results.js') }}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ KEY }}&callback=initMap"></script>
 {% endblock %}
@@ -28,7 +29,7 @@
 
         <div class="col-md-6">
             <div class="jumbotron">
-                 <h1>Hello, world!</h1>
+                 <h2>PM<sub>2.5</sub></h1>
 
                 <p>This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -37,7 +38,25 @@
                 </p>
             </div>
             <div class="jumbotron">
-                 <h1>Hello, world!</h1>
+                 <h2>NO<sub>2</sub></h1>
+
+                <p>This is a template for a simple marketing or informational website. It
+                    includes a large callout called the hero unit and three supporting pieces
+                    of content. Use it as a starting point to create something more unique.</p>
+                <p><a class="btn btn-primary btn-lg">Learn more »</a>
+                </p>
+            </div>
+            <div class="jumbotron">
+                 <h2>SO<sub>2</sub></h1>
+
+                <p>This is a template for a simple marketing or informational website. It
+                    includes a large callout called the hero unit and three supporting pieces
+                    of content. Use it as a starting point to create something more unique.</p>
+                <p><a class="btn btn-primary btn-lg">Learn more »</a>
+                </p>
+            </div>
+            <div class="jumbotron">
+                 <h2>Ozone</h1>
 
                 <p>This is a template for a simple marketing or informational website. It
                     includes a large callout called the hero unit and three supporting pieces
@@ -52,5 +71,4 @@
     <!--/row-->
 </div>
 <!--/.fluid-container-->
-<script>m = {{ monitors|tojson }};</script>
 {% endblock %}
