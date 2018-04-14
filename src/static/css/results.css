@@ -17,3 +17,16 @@
 .well {
   height: 100%;
 }
+
+.container .jumbotron {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.jumbotron p {
+  font-size: 14px;
+  font-weight: 200;
+  font-family: sans-serif;
+}
