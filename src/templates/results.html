@@ -7,6 +7,7 @@
 <script>lat = {{ lat }}; long = {{ long }};</script>
 <script>m = {{ monitors|tojson }};</script>
 <script>nm = {{ nearest_monitors|tojson }};</script>
+<script>f = {{ facilities|tojson }};</script>
 <script type=text/javascript src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
 <script type=text/javascript src="{{ url_for('static', filename='js/results.js') }}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ KEY }}&callback=initMap"></script>
@@ -20,6 +21,9 @@
             <div class="sidebar-nav-fixed affix">
                 <div class="well">
                     <div id="map"></div>
+                    <div id="well-footer">
+                      <h4>Placeholder</h4>
+                    </div>
                 </div>
                 <!--/.well -->
             </div>
