@@ -92,12 +92,26 @@ function constructMarkerFromMonitor(monitor) {
   return {marker: marker, circle: circle};
 }
 
+function constructMarkerFromFacility(facility) {
+  var marker = new google.maps.Marker({
+    position: {lat: monitor.latitude, lng: monitor.longitude},
+    map: map,
+    visible: false
+  });
+}
+
 var monitorMarkerSets;
 function constructMonitorMarkerSets(monitorMaps) {
   monitorMarkerSets = {};
   for (var key in monitorMaps) {
     monitorMarkerSets[key] = monitorMaps[key].map(constructMarkerFromMonitor);
   }
+}
+
+var facilityMarkerSet;
+function constructFacilityMarkerSets(facilityList) {
+  facilityMarkerSet = {};
+  facilityMarkerSet["facilities"] = facilityList.map(constructMarkerFromFacility);
 }
 
 function setMarkerSetVisible(setName, markerSets) {
