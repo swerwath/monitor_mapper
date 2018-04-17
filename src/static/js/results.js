@@ -95,11 +95,13 @@ function constructMarkerFromMonitor(monitor) {
 }
 
 
+magnitudeIconMap = {0 : 8, 1: 14, 2: 22, 3: 32, 4: 40};
+
 function constructMarkerFromFacility(facility) {
   var facilityIcon = {
     url: "/static/images/factory_icon.png", // url
-    scaledSize: new google.maps.Size(16, 18), // scaled size
-    size: new google.maps.Size(32, 37), // scaled size
+    scaledSize: new google.maps.Size(magnitudeIconMap[facility.magnitude], magnitudeIconMap[facility.magnitude]), // scaled size
+    //size: new google.maps.Size(, ]), // scaled size
     origin: new google.maps.Point(0,0), // origin
     anchor: new google.maps.Point(8, 9) // anchor
   };

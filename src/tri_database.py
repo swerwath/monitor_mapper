@@ -1,6 +1,8 @@
 import csv
 from rtree import index
 import re
+import statistics
+
 
 csv_to_obj_fields = {
                      "FACILITY_NAME" : "name",
@@ -12,10 +14,32 @@ csv_to_obj_fields = {
                     }
 
 class ChemicalData():
+    chemical_map = {}
     def __init__(self, name, quantity, unit):
         self.name = re.sub(r'\(.*\)', '', name).replace('"', '').split(" AND")[0]
         self.quantity = float(quantity)
         self.unit = unit
+
+        if self.name in ChemicalData.chemical_map.keys():
+            ChemicalData.chemical_map[self.name].append(self.quantity)
+        else:
+            ChemicalData.chemical_map[self.name] = [self.quantity]
+
+    # Scale from 0 to 4
+    def magnitude(self):
+        if len(ChemicalData.chemical_map[self.name]) < 2:
+            return 0
+        median = statistics.median(ChemicalData.chemical_map[self.name])
+        std = statistics.stdev(ChemicalData.chemical_map[self.name])
+        if self.quantity < median - 2 * std:
+            return 0
+        elif self.quantity < median - std:
+            return 1
+        elif self.quantity > median + 2 * std:
+            return 4
+        elif self.quantity > median + std:
+            return 3
+        return 2
 
     def to_json_dict(self):
         return {'name' : self.name, 'quantity' : self.quantity, 'unit' : self.unit}
@@ -36,6 +60,7 @@ class TRIEntry():
     def to_json_dict(self):
         to_ret = self.data
         to_ret["chemicals"] = [c.to_json_dict() for c in self.chemicals]
+        to_ret["magnitude"] = max([c.magnitude() for c in self.chemicals])
         return to_ret
 
 class TRIDatabase():
@@ -45,7 +70,9 @@ class TRIDatabase():
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if float(row["TOTAL_RELEASES"]) > 0 and row["CLEAR_AIR_ACT_CHEMICAL"] == "YES":
-                    raw_entries.append(TRIEntry(row))
+                    entry = TRIEntry(row)
+                    raw_entries.append(entry)
+
 
         merged_entries = {}
         for entry in raw_entries:
