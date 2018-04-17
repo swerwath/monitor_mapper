@@ -23,6 +23,7 @@ function initMap() {
   constructMonitorMarkerSets(m);
   constructFacilityMarkerSets(f);
   setMarkerSetVisible("PM2.5", monitorMarkerSets);
+  setMapCaptionChemical("PM<sub>2.5</sub>");
 }
 
 
@@ -110,20 +111,21 @@ function constructMarkerFromFacility(facility) {
     visible: true
   });
 
-  var content = "<b>" + facility.name + "</b>";
+  var content = "<b>" + facility.name + "</b> (<a href=\"https://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Facility/" + facility.id + "\" target=\"_blank\">info</a>)";
   if (facility.company != "NA" && facility.company != facility.name) {
     content = content + "<br />" + facility.company;
   }
+  content = content + "<br />" + facility.address + "<br /><br /> <b>Annual Chemcial Releases:</b>";
+  for (i in facility.chemicals) {
+    chem = facility.chemicals[i];
+    content = content + "<br />" + chem.name + ": " + chem.quantity + " " + chem.unit;
+  }
 
-  content = content + "<br />" + facility.address
   var infowindow = new google.maps.InfoWindow({
     content: content,
   });
-  marker.addListener('mouseover', function() {
+  marker.addListener('click', function() {
     infowindow.open(map, marker);
-  });
-  marker.addListener('mouseout', function() {
-    infowindow.close();
   });
 
   return marker;
@@ -172,6 +174,10 @@ function fillNearestInfo(nearestMonitors) {
     readElem.innerHTML = "Nearest Monitor Reading: <font color=\"" + getColor(monitor.AQI) + "\">" + monitor.AQI + " (" + getText(monitor.AQI) + ")</font>";
     distElem.innerHTML = "Nearest Monitoring Station: <font color=\"" + getDistColor(dist) + "\">" + dist.toFixed(1) + " miles</font>";
   }
+}
+
+function setMapCaptionChemical(name) {
+  document.getElementById("map-caption").innerHTML = "Showing monitoring stations for " + name;
 }
 
 setMarkerSetVisible("PM2.5", monitorMarkerSets);

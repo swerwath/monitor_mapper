@@ -1,5 +1,6 @@
 import csv
 from rtree import index
+import re
 
 csv_to_obj_fields = {
                      "FACILITY_NAME" : "name",
@@ -12,7 +13,7 @@ csv_to_obj_fields = {
 
 class ChemicalData():
     def __init__(self, name, quantity, unit):
-        self.name = name
+        self.name = re.sub(r'\(.*\)', '', name).replace('"', '').split(" AND")[0]
         self.quantity = float(quantity)
         self.unit = unit
 

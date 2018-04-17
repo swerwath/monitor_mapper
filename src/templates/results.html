@@ -22,7 +22,7 @@
                 <div class="well">
                     <div id="map"></div>
                     <div id="well-footer">
-                      <h4>Placeholder</h4>
+                      <h4 id="map-caption">Placeholder</h4>
                     </div>
                 </div>
                 <!--/.well -->
@@ -101,6 +101,7 @@ var pm25Waypoint = new Waypoint({
   element: document.getElementById('pm25'),
   handler: function() {
     setMarkerSetVisible("PM2.5", monitorMarkerSets);
+    setMapCaptionChemical("PM<sub>2.5</sub>");
   },
   offset: WP_OFFSET
 });
@@ -109,6 +110,7 @@ var no2Waypoint = new Waypoint({
   element: document.getElementById('no2'),
   handler: function() {
     setMarkerSetVisible("NO2", monitorMarkerSets);
+    setMapCaptionChemical("NO<sub>2</sub>");
   },
   offset: WP_OFFSET
 });
@@ -117,6 +119,7 @@ var so2Waypoint = new Waypoint({
   element: document.getElementById('so2'),
   handler: function() {
     setMarkerSetVisible("SO2", monitorMarkerSets);
+    setMapCaptionChemical("SO<sub>2</sub>");
   },
   offset: WP_OFFSET
 });
@@ -125,6 +128,7 @@ var ozoneWaypoint = new Waypoint({
   element: document.getElementById('ozone'),
   handler: function() {
     setMarkerSetVisible("OZONE", monitorMarkerSets);
+    setMapCaptionChemical("Ozone");
   },
   offset: WP_OFFSET
 });
