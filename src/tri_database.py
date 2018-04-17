@@ -42,7 +42,7 @@ class ChemicalData():
         return 2
 
     def to_json_dict(self):
-        return {'name' : self.name, 'quantity' : self.quantity, 'unit' : self.unit}
+        return {'name' : self.name, 'quantity' : self.quantity, 'unit' : self.unit, 'median' : statistics.median(ChemicalData.chemical_map[self.name])}
 
     def __repr__(self):
         return "(" + self.name + " " + str(self.quantity) + " " + self.unit + ")"
