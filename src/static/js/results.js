@@ -13,7 +13,7 @@ function initMap() {
     size: new google.maps.Size(64, 64), // scaled size
     origin: new google.maps.Point(0,0), // origin
     anchor: new google.maps.Point(20, 40) // anchor
-};
+  };
   var userLocationMarker = new google.maps.Marker({
     position: center,
     icon: userLocationIcon,
@@ -21,6 +21,7 @@ function initMap() {
   });
 
   constructMonitorMarkerSets(m);
+  constructFacilityMarkerSets(f);
   setMarkerSetVisible("PM2.5", monitorMarkerSets);
 }
 
@@ -92,12 +93,40 @@ function constructMarkerFromMonitor(monitor) {
   return {marker: marker, circle: circle};
 }
 
+
 function constructMarkerFromFacility(facility) {
+  var facilityIcon = {
+    url: "/static/images/factory_icon.png", // url
+    scaledSize: new google.maps.Size(16, 18), // scaled size
+    size: new google.maps.Size(32, 37), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(8, 9) // anchor
+  };
+
   var marker = new google.maps.Marker({
-    position: {lat: monitor.latitude, lng: monitor.longitude},
+    position: {lat: facility.latitude, lng: facility.longitude},
     map: map,
-    visible: false
+    icon: facilityIcon,
+    visible: true
   });
+
+  var content = "<b>" + facility.name + "</b>";
+  if (facility.company != "NA" && facility.company != facility.name) {
+    content = content + "<br />" + facility.company;
+  }
+
+  content = content + "<br />" + facility.address
+  var infowindow = new google.maps.InfoWindow({
+    content: content,
+  });
+  marker.addListener('mouseover', function() {
+    infowindow.open(map, marker);
+  });
+  marker.addListener('mouseout', function() {
+    infowindow.close();
+  });
+
+  return marker;
 }
 
 var monitorMarkerSets;

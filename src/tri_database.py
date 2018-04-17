@@ -43,7 +43,7 @@ class TRIDatabase():
         with open(csv_path) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if float(row["TOTAL_RELEASES"]) > 0:
+                if float(row["TOTAL_RELEASES"]) > 0 and row["CLEAR_AIR_ACT_CHEMICAL"] == "YES":
                     raw_entries.append(TRIEntry(row))
 
         merged_entries = {}
