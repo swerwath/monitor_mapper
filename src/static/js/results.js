@@ -95,15 +95,22 @@ function constructMarkerFromMonitor(monitor) {
 }
 
 
+function magnitudeToIconSize(mag) {
+  minS = 10;
+  maxS = 50;
+  size = 16 + mag * 10;
+  return Math.max(minS, Math.min(maxS, size));
+}
 magnitudeIconMap = {0 : 8, 1: 14, 2: 22, 3: 32, 4: 40};
 
 function constructMarkerFromFacility(facility) {
+  var mag = magnitudeToIconSize(facility.magnitude);
   var facilityIcon = {
     url: "/static/images/factory_icon.png", // url
-    scaledSize: new google.maps.Size(magnitudeIconMap[facility.magnitude], magnitudeIconMap[facility.magnitude]), // scaled size
+    scaledSize: new google.maps.Size(mag, mag), // scaled size
     //size: new google.maps.Size(, ]), // scaled size
     origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(8, 9) // anchor
+    anchor: new google.maps.Point(mag / 2, mag / 2) // anchor
   };
 
   var marker = new google.maps.Marker({
@@ -120,7 +127,7 @@ function constructMarkerFromFacility(facility) {
   content = content + "<br />" + facility.address + "<br /><br /> <b>Annual Chemcial Releases:</b>";
   for (i in facility.chemicals) {
     chem = facility.chemicals[i];
-    content = content + "<br />" + chem.name + ": " + chem.quantity + " " + chem.unit;
+    content = content + "<br />" + chem.name + ": " + chem.quantity.toFixed(2) + " " + chem.unit;
   }
 
   var infowindow = new google.maps.InfoWindow({

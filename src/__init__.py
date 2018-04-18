@@ -3,10 +3,11 @@ from geopy.geocoders import Nominatim
 from .airnow_worker import AirNowWorker, group_monitor_data, get_nearest_monitor_by_category
 from .util import get_bbox
 from .tri_database import TRIDatabase
+import os
 
 app = Flask(__name__)
 
-KEY = "AIzaSyAkffk3dpehjS06Gg2Vj9hfHeIqF5QZmn4"
+KEY = os.environ['GOOGLE_MAPS_KEY']
 
 worker = AirNowWorker()
 tri = TRIDatabase()

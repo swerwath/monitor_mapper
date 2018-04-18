@@ -25,24 +25,16 @@ class ChemicalData():
         else:
             ChemicalData.chemical_map[self.name] = [self.quantity]
 
-    # Scale from 0 to 4
+    # Number of standard deviations above or below
     def magnitude(self):
         if len(ChemicalData.chemical_map[self.name]) < 2:
             return 0
-        median = statistics.median(ChemicalData.chemical_map[self.name])
+        mean = statistics.mean(ChemicalData.chemical_map[self.name])
         std = statistics.stdev(ChemicalData.chemical_map[self.name])
-        if self.quantity < median - 2 * std:
-            return 0
-        elif self.quantity < median - std:
-            return 1
-        elif self.quantity > median + 2 * std:
-            return 4
-        elif self.quantity > median + std:
-            return 3
-        return 2
+        return (self.quantity - mean) / std
 
     def to_json_dict(self):
-        return {'name' : self.name, 'quantity' : self.quantity, 'unit' : self.unit, 'median' : statistics.median(ChemicalData.chemical_map[self.name])}
+        return {'name' : self.name, 'quantity' : self.quantity, 'unit' : self.unit, 'median' : statistics.mean(ChemicalData.chemical_map[self.name])}
 
     def __repr__(self):
         return "(" + self.name + " " + str(self.quantity) + " " + self.unit + ")"
