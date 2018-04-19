@@ -4,6 +4,8 @@ import re
 import statistics
 
 
+CSV_PATH = './data/raw/TRI.csv'
+
 csv_to_obj_fields = {
                      "FACILITY_NAME" : "name",
                      "TRI_FACILITY_ID" : "id",
@@ -56,7 +58,7 @@ class TRIEntry():
         return to_ret
 
 class TRIDatabase():
-    def __init__(self, csv_path="./data/raw/TRI.csv"):
+    def __init__(self, csv_path=CSV_PATH):
         raw_entries = []
         with open(csv_path) as csvfile:
             reader = csv.DictReader(csvfile)

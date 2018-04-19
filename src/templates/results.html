@@ -8,6 +8,7 @@
 <script>m = {{ monitors|tojson }};</script>
 <script>nm = {{ nearest_monitors|tojson }};</script>
 <script>f = {{ facilities|tojson }};</script>
+<script>orgs = {{ orgs|tojson }};</script>
 <script type=text/javascript src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
 <script type=text/javascript src="{{ url_for('static', filename='js/results.js') }}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ KEY }}&callback=initMap"></script>
@@ -19,7 +20,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="sidebar-nav-fixed affix">
-                <div class="well">
+                <div class="well" id="mapwell">
                     <div id="map"></div>
                     <div id="well-footer">
                       <h4 id="map-caption">Placeholder</h4>
@@ -90,6 +91,34 @@
         <!--/span-->
     </div>
     <!--/row-->
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="jumbotron bottomcontent">
+             <h2 id="getinvolved">Get Involved</h1>
+            <p class="sideparagraph">This is a template for a simple marketing or informational website. It
+                includes a large callout called the hero unit and three supporting pieces
+                of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
+                    includes a large callout called the hero unit and three supporting pieces
+                    of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg">Learn more »</a>
+            </p>
+        </div>
+      </div>
+      <div class="col-md-8">
+          <div class="jumbotron bottomcontent">
+               <h2 id="getinvolved">Get Involved</h1>
+              <p class="sideparagraph">This is a template for a simple marketing or informational website. It
+                  includes a large callout called the hero unit and three supporting pieces
+                  of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
+                      includes a large callout called the hero unit and three supporting pieces
+                      of content. Use it as a starting point to create something more unique.</p>
+              <p><a class="btn btn-primary btn-lg">Learn more »</a>
+              </p>
+          </div>
+      </div>
+
+    </div>
 </div>
 <!--/.fluid-container-->
 
@@ -129,8 +158,17 @@ var ozoneWaypoint = new Waypoint({
   handler: function() {
     setMarkerSetVisible("OZONE", monitorMarkerSets);
     setMapCaptionChemical("Ozone");
+    document.getElementById("mapwell").hidden = false;
   },
   offset: WP_OFFSET
+});
+
+var bottomWaypoint = new Waypoint({
+  element: document.getElementById('ozone-read'),
+  handler: function() {
+    document.getElementById("mapwell").hidden = true;
+  },
+  offset: -1 * WP_OFFSET
 });
 
 fillNearestInfo(nm);

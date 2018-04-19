@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from geopy.geocoders import Nominatim
 from .airnow_worker import AirNowWorker, group_monitor_data, get_nearest_monitor_by_category
+from .community_database import CommunityDatabase
 from .util import get_bbox
 from .tri_database import TRIDatabase
 import os
@@ -11,6 +12,7 @@ KEY = os.environ['GOOGLE_MAPS_KEY']
 
 worker = AirNowWorker()
 tri = TRIDatabase()
+cd = CommunityDatabase()
 geolocator = Nominatim(timeout=5)
 
 @app.route('/')
@@ -30,7 +32,9 @@ def results():
     facilities = tri.get_facilities(bbox)
     facilities_dicts = [f.to_json_dict() for f in facilities]
 
-    return render_template("results.html", lat=lat, long=long, KEY=KEY, monitors=grouped_monitors, nearest_monitors=nearest_monitors, facilities=facilities_dicts)
+    orgs = cd.get_organizations(bbox)
+
+    return render_template("results.html", lat=lat, long=long, KEY=KEY, monitors=grouped_monitors, nearest_monitors=nearest_monitors, facilities=facilities_dicts, orgs=orgs)
 
 @app.route('/place_results')
 def place_results():

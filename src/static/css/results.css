@@ -24,6 +24,10 @@
   min-height: 95vh;
 }
 
+.bottomcontent {
+  min-height: 90vh;
+}
+
 .container .jumbotron {
   padding-left: 20px;
   padding-right: 20px;
