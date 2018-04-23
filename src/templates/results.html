@@ -23,7 +23,7 @@
         <div class="well" id="mapwell">
           <div id="map"></div>
           <div id="well-footer">
-            <h4 id="map-caption">Placeholder</h4>
+            <h4 id="map-caption">Loading map...</h4>
           </div>
         </div>
         <!--/.well -->
@@ -37,52 +37,33 @@
     <div class="col-md-6">
       <div class="jumbotron sidecontent">
         <h2 id="pm25">PM<sub>2.5</sub></h2>
-        <h4 id="pm25-dist">Placeholder</h4>
-        <h4 id="pm25-read">Placeholder</h4>
-        <p class="sideparagraph">This is a template for a simple marketing or informational website. It
-          includes a large callout called the hero unit and three supporting pieces
-          of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
-          includes a large callout called the hero unit and three supporting pieces
-          of content. Use it as a starting point to create something more unique.</p>
+        <h4 id="pm25-dist">No nearby PM<sub>2.5</sub> Monitor!</h4>
+        <h4 id="pm25-read"></h4>
+        <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors) }}</p>
           <p><a class="btn btn-primary btn-lg">Learn more »</a>
           </p>
         </div>
         <div class="jumbotron sidecontent">
           <h2 id="no2">NO<sub>2</sub></h2>
-          <h4 id="no2-dist">Placeholder</h4>
-          <h4 id="no2-read">Placeholder</h4>
-
-          <p>This is a template for a simple marketing or informational website. It
-            includes a large callout called the hero unit and three supporting pieces
-            of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
-            includes a large callout called the hero unit and three supporting pieces
-            of content. Use it as a starting point to create something more unique.</p>
+          <h4 id="no2-dist">No nearby NO<sub>2</sub> Monitor!</h4>
+          <h4 id="no2-read"></h4>
+          <p class="sideparagraph">{{ get_copy('NO2', nearest_monitors) }}</p>
             <p><a class="btn btn-primary btn-lg">Learn more »</a>
             </p>
           </div>
           <div id="so2" class="jumbotron sidecontent">
             <h2>SO<sub>2</sub></h2>
-            <h4 id="so2-dist">Placeholder</h4>
-            <h4 id="so2-read">Placeholder</h4>
-
-            <p class="sideparagraph">This is a template for a simple marketing or informational website. It
-              includes a large callout called the hero unit and three supporting pieces
-              of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
-              includes a large callout called the hero unit and three supporting pieces
-              of content. Use it as a starting point to create something more unique.</p>
+            <h4 id="so2-dist">No nearby SO<sub>2</sub> Monitor!</h4>
+            <h4 id="so2-read"></h4>
+            <p class="sideparagraph">{{ get_copy('SO2', nearest_monitors) }}</p>
               <p><a class="btn btn-primary btn-lg">Learn more »</a>
               </p>
             </div>
             <div id="ozone" class="jumbotron sidecontent">
               <h2>Ozone</h2>
-              <h4 id="ozone-dist">Placeholder</h4>
-              <h4 id="ozone-read">Placeholder</h4>
-
-              <p class="sideparagraph">This is a template for a simple marketing or informational website. It
-                includes a large callout called the hero unit and three supporting pieces
-                of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
-                includes a large callout called the hero unit and three supporting pieces
-                of content. Use it as a starting point to create something more unique.</p>
+              <h4 id="ozone-dist">No nearby Ozone Monitor!</h4>
+              <h4 id="ozone-read"></h4>
+              <p class="sideparagraph">{{ get_copy('OZONE', nearest_monitors) }}</p>
                 <p><a class="btn btn-primary btn-lg">Learn more »</a>
                 </p>
               </div>
@@ -93,18 +74,12 @@
           <!--/row-->
 
           <div class="row">
-            <div class="col-md-6">
-              <div class="jumbotron bottomcontent">
-                <h2 id="getinvolved">Get Involved</h2>
-                <p class="sideparagraph">This is a template for a simple marketing or informational website. It
-                  includes a large callout called the hero unit and three supporting pieces
-                  of content. Use it as a starting point to create something more unique. This is a template for a simple marketing or informational website. It
-                  includes a large callout called the hero unit and three supporting pieces
-                  of content. Use it as a starting point to create something more unique.</p>
-                  <p><a class="btn btn-primary btn-lg">Learn more »</a>
-                  </p>
-                </div>
-              </div>
+            <div class="col get-inv-title" id="getinv">
+              <h1>Get Involved</h1>
+            </div>
+          </div>
+
+          <div class="row">
               {% for org in orgs %}
               <div class="col-md-6">
                 <div class="jumbotron orgcontent">
@@ -119,12 +94,29 @@
                     </div>
                   </div>
                   <div class="row link-row">
-                  <p><a class="btn btn-primary btn-lg org-link" href="{{ org['Website'] }}" target="_blank">Learn More</a></p>
+                  <p><a class="btn btn-primary btn-lg org-link" href="{{ org['Website'] }}" target="_blank">Get Involved</a></p>
                 </div>
                 </div>
               </div>
               {% endfor %}
-
+              </div>
+              <div class="row">
+              <div class="col-md-6">
+                <div class="jumbotron bottomcontent">
+                  <h2 id="getinvolved">Contact your air quality district</h2>
+                  <p class="sideparagraph">Your local air quality ditrict is responsible monitoring air pollution in your area. It also develops and oversees programs to maintain air quality to within state and federal standards. If you are unsatisfied with the level of air quality or air quality monitoring in your community, you can contact them using the link below.</p>
+                    <p><a class="btn btn-primary btn-lg" href="https://www.arb.ca.gov/capcoa/dismap.htm">Find your air district</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="jumbotron bottomcontent">
+                    <h2>Learn more about AB 617</h2>
+                    <p class="sideparagraph">In 2017, the California Air Resources Board (CARB) established <b>Community Air Protection Program</b> (AB 617) in an effort to reduce air pollution in vulnerable communities. In addition laying out a statewide emission-reduction strategy, AB 617 provides funding for community-led air monitoring efforts, especially in areas near large emission sources. Use the link below to learn more about state grants for local community groups.</p>
+                      <p><a class="btn btn-primary btn-lg" href="https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program-ab617">Learn More</a>
+                      </p>
+                    </div>
+                  </div>
             </div>
           </div>
           <!--/.fluid-container-->
@@ -175,7 +167,7 @@
             handler: function() {
               document.getElementById("mapwell").hidden = true;
             },
-            offset: -2 * WP_OFFSET
+            offset: -2.5 * WP_OFFSET
           });
 
           fillNearestInfo(nm);

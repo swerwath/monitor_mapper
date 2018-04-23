@@ -176,12 +176,15 @@ function fillNearestInfo(nearestMonitors) {
   params = [["PM2.5", "pm25-read", "pm25-dist"],["NO2", "no2-read", "no2-dist"],["SO2", "so2-read", "so2-dist"],["OZONE", "ozone-read", "ozone-dist"]]
 
   for (i in params) {
-    monitor = nearestMonitors[params[i][0]][0];
-    dist = nearestMonitors[params[i][0]][1];
-    readElem = document.getElementById(params[i][1]);
-    distElem = document.getElementById(params[i][2]);
-    readElem.innerHTML = "Nearest Monitor Reading: <font color=\"" + getColor(monitor.AQI) + "\">" + monitor.AQI + " (" + getText(monitor.AQI) + ")</font>";
-    distElem.innerHTML = "Nearest Monitoring Station: <font color=\"" + getDistColor(dist) + "\">" + dist.toFixed(1) + " miles</font>";
+    var chem_name = params[i][0];
+    if (chem_name in nearestMonitors) {
+      monitor = nearestMonitors[chem_name][0];
+      dist = nearestMonitors[chem_name][1];
+      readElem = document.getElementById(params[i][1]);
+      distElem = document.getElementById(params[i][2]);
+      readElem.innerHTML = "Nearest Monitor Reading: <font color=\"" + getColor(monitor.AQI) + "\">" + monitor.AQI + " (" + getText(monitor.AQI) + ")</font>";
+      distElem.innerHTML = "Nearest Monitoring Station: <font color=\"" + getDistColor(dist) + "\">" + dist.toFixed(1) + " miles</font>";
+    }
   }
 }
 

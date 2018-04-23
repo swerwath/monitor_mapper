@@ -4,6 +4,7 @@ from .airnow_worker import AirNowWorker, group_monitor_data, get_nearest_monitor
 from .community_database import CommunityDatabase
 from .util import get_bbox
 from .tri_database import TRIDatabase
+from .copy import get_copy
 import os
 
 app = Flask(__name__)
@@ -34,7 +35,7 @@ def results():
 
     orgs = cd.get_organizations(bbox)
 
-    return render_template("results.html", lat=lat, long=long, KEY=KEY, monitors=grouped_monitors, nearest_monitors=nearest_monitors, facilities=facilities_dicts, orgs=orgs)
+    return render_template("results.html", lat=lat, long=long, KEY=KEY, monitors=grouped_monitors, nearest_monitors=nearest_monitors, facilities=facilities_dicts, orgs=orgs, get_copy=get_copy)
 
 @app.route('/place_results')
 def place_results():
