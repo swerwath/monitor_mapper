@@ -80,7 +80,7 @@ function constructMarkerFromMonitor(monitor) {
   });
   circle.bindTo('center', marker, 'position');
 
-  var content = monitor.param + " AQI: " + monitor.AQI + "(" + getText(monitor.AQI) + ")";
+  var content = monitor.param + " AQI: " + monitor.AQI + " (" + getText(monitor.AQI) + ")";
   var infowindow = new google.maps.InfoWindow({
     content: content
   });

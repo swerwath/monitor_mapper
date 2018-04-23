@@ -25,7 +25,11 @@
 }
 
 .bottomcontent {
-  min-height: 90vh;
+  min-height: 60vh;
+}
+
+.orgcontent {
+  min-height: 70vh;
 }
 
 .container .jumbotron {
@@ -39,4 +43,30 @@
   font-size: 14px;
   font-weight: 200;
   font-family: sans-serif;
+}
+
+.org-img {
+  width: 100%;
+  height: auto;
+}
+
+.org-img-col {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.org-col {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.org-link {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.link-row {
+  position: relative;
+  padding-top: 50px;
 }
