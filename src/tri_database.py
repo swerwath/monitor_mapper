@@ -29,7 +29,7 @@ class ChemicalData():
 
     # Number of standard deviations above or below
     def magnitude(self):
-        if len(ChemicalData.chemical_map[self.name]) < 2:
+        if len(ChemicalData.chemical_map[self.name]) < 5:
             return 0
         mean = statistics.mean(ChemicalData.chemical_map[self.name])
         std = statistics.stdev(ChemicalData.chemical_map[self.name])
