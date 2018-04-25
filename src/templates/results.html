@@ -33,135 +33,148 @@
     <!--/span-->
 
     <div class="col-md-3"></div>
-
     <div class="col-md-6">
       <div class="jumbotron sidecontent">
         <h2 id="pm25">PM<sub>2.5</sub></h2>
+        <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors)[0] }}</p>
         <h4 id="pm25-dist">No nearby PM<sub>2.5</sub> Monitor!</h4>
+        <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors)[1] }}</p>
         <h4 id="pm25-read"></h4>
-        <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors) }}</p>
+        <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors)[2] }}</p>
+        <a class="btn btn-primary btn-lg" href="https://www.epa.gov/pm-pollution/particulate-matter-pm-basics" target="_blank">Learn More About PM<sub>2.5</sub></a>
+      </div>
+      <div class="jumbotron sidecontent">
+        <h2 id="no2">NO<sub>2</sub></h2>
+        <p class="sideparagraph">{{ get_copy('NO2', nearest_monitors)[0] }}</p>
+        <h4 id="no2-dist">No nearby NO<sub>2</sub> Monitor!</h4>
+        <p class="sideparagraph">{{ get_copy('NO2', nearest_monitors)[1] }}</p>
+        <h4 id="no2-read"></h4>
+        <p class="sideparagraph">{{ get_copy('NO2', nearest_monitors)[2] }}</p>
+        <a class="btn btn-primary btn-lg" href="https://www.epa.gov/no2-pollution/basic-information-about-no2" target="_blank">Learn More About NO<sub>2</sub></a>
+      </div>
+      <div id="so2" class="jumbotron sidecontent">
+        <h2>SO<sub>2</sub></h2>
+        <p class="sideparagraph">{{ get_copy('SO2', nearest_monitors)[0] }}</p>
+        <h4 id="so2-dist">No nearby SO<sub>2</sub> Monitor!</h4>
+        <p class="sideparagraph">{{ get_copy('SO2', nearest_monitors)[1] }}</p>
+        <h4 id="so2-read"></h4>
+        <p class="sideparagraph">{{ get_copy('SO2', nearest_monitors)[2] }}</p>
+        <a class="btn btn-primary btn-lg" href="https://www.epa.gov/so2-pollution/sulfur-dioxide-basics" target="_blank">Learn More About SO<sub>2</sub></a>
+      </div>
+      <div id="ozone" class="jumbotron sidecontent">
+        <h2>Ozone</h2>
+        <p class="sideparagraph">{{ get_copy('OZONE', nearest_monitors)[0] }}</p>
+        <h4 id="ozone-dist">No nearby Ozone Monitor!</h4>
+        <p class="sideparagraph">{{ get_copy('OZONE', nearest_monitors)[1] }}</p>
+        <h4 id="ozone-read"></h4>
+        <p class="sideparagraph">{{ get_copy('OZONE', nearest_monitors)[2] }}</p>
+        <a class="btn btn-primary btn-lg" href="https://www.epa.gov/ozone-pollution" target="_blank">Learn More About Ozone</a>
+      </div>
+
+    </div>
+    <!--/span-->
+  </div>
+  <!--/row-->
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 get-inv-title" id="getinv">
+      <h1>Get Involved</h1>
+      <h4>You and your community have a right to breathe healthy air, but regulators can't make that happen if they don't have an accurate idea of what air quality is like in your community.<br /><br />If you're not satisfied with the level of air monitoring in your community, there are many ways you can get involved to create change. In addition to contacting your local air quality district, a number of nonprofit organizations across California are working to hold polluters accountable through community-led air monitoring programs.<br /><br />See below for details on programs near you.</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for org in orgs %}
+    <div class="col-md-6">
+      <div class="jumbotron orgcontent">
+
+        <div class="row">
+          <div class="col-md-4 org-img-col">
+            <img src="{{ org['Image'] }}" class="img-thumbnail org-img">
+          </div>
+          <div class="col-md-8 org-col">
+            <h2 id="getinvolved">{{ org['Name'] }}</h2>
+            <p class="sideparagraph">{{ org['Description'] }}</p>
+          </div>
         </div>
-        <div class="jumbotron sidecontent">
-          <h2 id="no2">NO<sub>2</sub></h2>
-          <h4 id="no2-dist">No nearby NO<sub>2</sub> Monitor!</h4>
-          <h4 id="no2-read"></h4>
-          <p class="sideparagraph">{{ get_copy('NO2', nearest_monitors) }}</p>
-          </div>
-          <div id="so2" class="jumbotron sidecontent">
-            <h2>SO<sub>2</sub></h2>
-            <h4 id="so2-dist">No nearby SO<sub>2</sub> Monitor!</h4>
-            <h4 id="so2-read"></h4>
-            <p class="sideparagraph">{{ get_copy('SO2', nearest_monitors) }}</p>
-            </div>
-            <div id="ozone" class="jumbotron sidecontent">
-              <h2>Ozone</h2>
-              <h4 id="ozone-dist">No nearby Ozone Monitor!</h4>
-              <h4 id="ozone-read"></h4>
-              <p class="sideparagraph">{{ get_copy('OZONE', nearest_monitors) }}</p>
-              </div>
+        <div class="row link-row">
+          <p><a class="btn btn-primary btn-lg org-link" href="{{ org['Website'] }}" target="_blank">Get Involved</a></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="jumbotron bottomcontent">
+        <h2 id="getinvolved">Contact your air quality district</h2>
+        <p class="sideparagraph">Your local air quality district is responsible monitoring air pollution in your area. It also develops and oversees programs to maintain air quality to within state and federal standards. If you are unsatisfied with the level of air quality or air quality monitoring in your community, you can contact them using the link below.</p>
+        <p><a class="btn btn-primary btn-lg" href="https://www.arb.ca.gov/capcoa/dismap.htm">Find your air district</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="jumbotron bottomcontent">
+        <h2>Learn more about AB 617</h2>
+        <p class="sideparagraph">In 2017, the California Air Resources Board (CARB) established <b>Community Air Protection Program</b> (AB 617) in an effort to reduce air pollution in vulnerable communities. In addition laying out a statewide emission-reduction strategy, AB 617 provides funding for community-led air monitoring efforts, especially in areas near large emission sources. Use the link below to learn more about state grants for local community groups.</p>
+        <p><a class="btn btn-primary btn-lg" href="https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program-ab617">Learn More</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.fluid-container-->
 
-            </div>
-            <!--/span-->
-          </div>
-          <!--/row-->
+<script>
 
-          <div class="row">
-            <div class="col get-inv-title" id="getinv">
-              <h1>Get Involved</h1>
-            </div>
-          </div>
+const WP_OFFSET = 30;
 
-          <div class="row">
-              {% for org in orgs %}
-              <div class="col-md-6">
-                <div class="jumbotron orgcontent">
+var pm25Waypoint = new Waypoint({
+  element: document.getElementById('pm25'),
+  handler: function() {
+    setMarkerSetVisible("PM2.5", monitorMarkerSets);
+    setMapCaptionChemical("PM<sub>2.5</sub>");
+  },
+  offset: WP_OFFSET
+});
 
-                  <div class="row">
-                    <div class="col-md-4 org-img-col">
-                      <img src="{{ org['Image'] }}" class="img-thumbnail org-img">
-                    </div>
-                    <div class="col-md-8 org-col">
-                      <h2 id="getinvolved">{{ org['Name'] }}</h2>
-                      <p class="sideparagraph">{{ org['Description'] }}</p>
-                    </div>
-                  </div>
-                  <div class="row link-row">
-                  <p><a class="btn btn-primary btn-lg org-link" href="{{ org['Website'] }}" target="_blank">Get Involved</a></p>
-                </div>
-                </div>
-              </div>
-              {% endfor %}
-              </div>
-              <div class="row">
-              <div class="col-md-6">
-                <div class="jumbotron bottomcontent">
-                  <h2 id="getinvolved">Contact your air quality district</h2>
-                  <p class="sideparagraph">Your local air quality district is responsible monitoring air pollution in your area. It also develops and oversees programs to maintain air quality to within state and federal standards. If you are unsatisfied with the level of air quality or air quality monitoring in your community, you can contact them using the link below.</p>
-                    <p><a class="btn btn-primary btn-lg" href="https://www.arb.ca.gov/capcoa/dismap.htm">Find your air district</a>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="jumbotron bottomcontent">
-                    <h2>Learn more about AB 617</h2>
-                    <p class="sideparagraph">In 2017, the California Air Resources Board (CARB) established <b>Community Air Protection Program</b> (AB 617) in an effort to reduce air pollution in vulnerable communities. In addition laying out a statewide emission-reduction strategy, AB 617 provides funding for community-led air monitoring efforts, especially in areas near large emission sources. Use the link below to learn more about state grants for local community groups.</p>
-                      <p><a class="btn btn-primary btn-lg" href="https://ww2.arb.ca.gov/our-work/programs/community-air-protection-program-ab617">Learn More</a>
-                      </p>
-                    </div>
-                  </div>
-            </div>
-          </div>
-          <!--/.fluid-container-->
+var no2Waypoint = new Waypoint({
+  element: document.getElementById('no2'),
+  handler: function() {
+    setMarkerSetVisible("NO2", monitorMarkerSets);
+    setMapCaptionChemical("NO<sub>2</sub>");
+  },
+  offset: WP_OFFSET
+});
 
-          <script>
+var so2Waypoint = new Waypoint({
+  element: document.getElementById('so2'),
+  handler: function() {
+    setMarkerSetVisible("SO2", monitorMarkerSets);
+    setMapCaptionChemical("SO<sub>2</sub>");
+  },
+  offset: WP_OFFSET
+});
 
-          const WP_OFFSET = 30;
+var ozoneWaypoint = new Waypoint({
+  element: document.getElementById('ozone'),
+  handler: function() {
+    setMarkerSetVisible("OZONE", monitorMarkerSets);
+    setMapCaptionChemical("Ozone");
+    document.getElementById("mapwell").hidden = false;
+  },
+  offset: WP_OFFSET
+});
 
-          var pm25Waypoint = new Waypoint({
-            element: document.getElementById('pm25'),
-            handler: function() {
-              setMarkerSetVisible("PM2.5", monitorMarkerSets);
-              setMapCaptionChemical("PM<sub>2.5</sub>");
-            },
-            offset: WP_OFFSET
-          });
+var bottomWaypoint = new Waypoint({
+  element: document.getElementById('ozone-read'),
+  handler: function() {
+    document.getElementById("mapwell").hidden = true;
+  },
+  offset: -3 * WP_OFFSET
+});
 
-          var no2Waypoint = new Waypoint({
-            element: document.getElementById('no2'),
-            handler: function() {
-              setMarkerSetVisible("NO2", monitorMarkerSets);
-              setMapCaptionChemical("NO<sub>2</sub>");
-            },
-            offset: WP_OFFSET
-          });
-
-          var so2Waypoint = new Waypoint({
-            element: document.getElementById('so2'),
-            handler: function() {
-              setMarkerSetVisible("SO2", monitorMarkerSets);
-              setMapCaptionChemical("SO<sub>2</sub>");
-            },
-            offset: WP_OFFSET
-          });
-
-          var ozoneWaypoint = new Waypoint({
-            element: document.getElementById('ozone'),
-            handler: function() {
-              setMarkerSetVisible("OZONE", monitorMarkerSets);
-              setMapCaptionChemical("Ozone");
-              document.getElementById("mapwell").hidden = false;
-            },
-            offset: WP_OFFSET
-          });
-
-          var bottomWaypoint = new Waypoint({
-            element: document.getElementById('ozone-read'),
-            handler: function() {
-              document.getElementById("mapwell").hidden = true;
-            },
-            offset: -2.5 * WP_OFFSET
-          });
-
-          fillNearestInfo(nm);
-          </script>
-          {% endblock %}
+fillNearestInfo(nm);
+</script>
+{% endblock %}
