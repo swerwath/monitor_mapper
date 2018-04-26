@@ -77,7 +77,7 @@ def get_copy(chem, nearest_monitors):
     info = INFO[chem] + "<br /><br />"
     if not chem in nearest_monitors.keys():
         dist = "It looks like <b>there are no " + CHEM_NAMES[chem] + " monitors in your area!</b> Why does this matter? " + \
-        HEALTH_RISKS[chem] + " Since you don't live by any " + CHEM_NAMES[chem] + \
+        " Since you don't live by any " + CHEM_NAMES[chem] + \
         " monitoring stations, there is no way for public health officials to estimate the exposure of people in your community. " + \
         EJ_EVIDENCE[chem] + " If you're concerned about the lack of " + CHEM_NAMES[chem] + " monitoring in your community, you can " + \
         "learn more about " + CHEM_NAMES[chem] + " <a href=\"" + LINK[chem] + "\" target=\"_blank\">here</a>, or keep scrolling to get involved " + \

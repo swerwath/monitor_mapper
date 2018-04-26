@@ -16,24 +16,29 @@
 
 {% block body %}
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="sidebar-nav-fixed affix">
-        <div id="mapwell">
-          <div id="map"></div>
-          <div id="well-footer">
-            <h4 class="legend" id="map-caption">Loading map...</h4>
-          </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="sidebar-nav-fixed affix">
+      <div id="mapwell">
+        <div id="map"></div>
+        <div id="well-footer">
+          <h4 class="legend" id="map-caption">Loading map...</h4>
         </div>
-        <!--/.well -->
       </div>
-      <!--/sidebar-nav-fixed -->
+      <!--/.well -->
     </div>
-    <!--/span-->
-    <div class="container">
+    <!--/sidebar-nav-fixed -->
+  </div>
+  <!--/span-->
+  <div class="container">
 
     <!--<div class="col-md-3"></div>-->
     <div class="col-md-6 jumbocol">
+      <div class="right-container">
+        <h1>Air Monitoring in Your Area</h1>
+        <p class="lead">The map on the left shows air monitoring in your area: the blue marker indicates your location, while red markers indicate air monitoring stations. The color of the circles around the air monitors indicate how healthy the air in that area is, while the radius indicates its effective range. The black squares indcate polluting facilities; click them for more info.</p>
+        <p class="lead">Scroll down to learn more about specific air pollutants in your area.</p>
+      </div>
       <div class="jumbotron sidecontent">
         <h2 id="pm25">PM<sub>2.5</sub></h2>
         <p class="sideparagraph">{{ get_copy('PM2.5', nearest_monitors)[0] }}</p>

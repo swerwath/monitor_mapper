@@ -48,6 +48,11 @@ h2 {
   font-family: sans-serif;
 }
 
+.lead {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
 .bottomcontent {
   min-height: 10vh;
 }
@@ -90,4 +95,8 @@ h2 {
 
 .jumbocol {
   padding-right: 0px;
+}
+
+.right-container {
+  margin-left: 15px;
 }

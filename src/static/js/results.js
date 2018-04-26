@@ -28,6 +28,7 @@ function initMap() {
 
   legend = document.getElementById("map-caption");
   map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(legend);
+
 }
 
 
