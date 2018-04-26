@@ -8,9 +8,10 @@ function initMap() {
   });
 
   var userLocationIcon = {
-    url: "http://maps.google.com/mapfiles/kml/paddle/blu-circle.png", // url
-    scaledSize: new google.maps.Size(40, 40), // scaled size
-    size: new google.maps.Size(64, 64), // scaled size
+    path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+    fillColor: "#0000FF",
+    fillOpacity: .9,
+    scale: .6,
     origin: new google.maps.Point(0,0), // origin
     anchor: new google.maps.Point(20, 40) // anchor
   };
@@ -24,6 +25,9 @@ function initMap() {
   constructFacilityMarkerSets(f);
   setMarkerSetVisible("PM2.5", monitorMarkerSets);
   setMapCaptionChemical("PM<sub>2.5</sub>");
+
+  legend = document.getElementById("map-caption");
+  map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(legend);
 }
 
 
@@ -65,9 +69,17 @@ function getText(aqi) {
 }
 
 function constructMarkerFromMonitor(monitor) {
+  var markerIcon = {
+    path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+    fillColor: "#FF0000",
+    fillOpacity: .9,
+    scale: .6,
+    origin: new google.maps.Point(0,0), // origin
+  };
   var marker = new google.maps.Marker({
     position: {lat: monitor.latitude, lng: monitor.longitude},
     map: map,
+    icon: markerIcon,
     visible: false
   });
   var circle = new google.maps.Circle({
@@ -96,19 +108,19 @@ function constructMarkerFromMonitor(monitor) {
 
 
 function magnitudeToIconSize(mag) {
-  minS = 10;
-  maxS = 50;
-  size = 16 + mag * 10;
+  minS = .3;
+  maxS = .8;
+  size = .5 + mag * .9;
   return Math.max(minS, Math.min(maxS, size));
 }
-magnitudeIconMap = {0 : 8, 1: 14, 2: 22, 3: 32, 4: 40};
 
 function constructMarkerFromFacility(facility) {
   var mag = magnitudeToIconSize(facility.magnitude);
   var facilityIcon = {
-    url: "/static/images/factory_icon.png", // url
-    scaledSize: new google.maps.Size(mag, mag), // scaled size
-    //size: new google.maps.Size(, ]), // scaled size
+    path: "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z",
+    fillColor: "#7C7C7C",
+    fillOpacity: .85,
+    scale: mag,// magnitudeToIconSize(mag),
     origin: new google.maps.Point(0,0), // origin
     anchor: new google.maps.Point(mag / 2, mag / 2) // anchor
   };

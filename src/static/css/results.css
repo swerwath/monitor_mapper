@@ -35,6 +35,13 @@ h2 {
   margin-top: 0px;
 }
 
+.legend {
+  background: #fff;
+  padding: 8px;
+  margin: 12px;
+  border-radius: 10px;
+}
+
 .jumbotron p {
   font-size: 15px;
   font-weight: 200;

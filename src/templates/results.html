@@ -22,7 +22,7 @@
         <div id="mapwell">
           <div id="map"></div>
           <div id="well-footer">
-            <h4 id="map-caption">Loading map...</h4>
+            <h4 class="legend" id="map-caption">Loading map...</h4>
           </div>
         </div>
         <!--/.well -->
@@ -178,7 +178,7 @@ var bottomWaypoint = new Waypoint({
   handler: function() {
     document.getElementById("mapwell").hidden = true;
   },
-  offset: -5 * WP_OFFSET
+  offset: -6 * WP_OFFSET
 });
 
 fillNearestInfo(nm);
