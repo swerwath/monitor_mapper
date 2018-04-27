@@ -15,10 +15,10 @@ HEALTH_RISKS = {
 }
 
 EJ_EVIDENCE = {
-    "PM2.5" : "Additionally, PM<sub>2.5</sub> carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\ target=\"_blank\">are more likely to live in areas with high PM<sub>2.5</sub> levels</a>. ",
+    "PM2.5" : "Additionally, PM<sub>2.5</sub> carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\" target=\"_blank\">are more likely to live in areas with high PM<sub>2.5</sub> levels</a>. ",
     "SO2" : "",
     "NO2" : "",
-    "OZONE" : "Additionally, ozone carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\ target=\"_blank\">are more likely to live in areas with high ozone levels</a>. ",
+    "OZONE" : "Additionally, ozone carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\" target=\"_blank\">are more likely to live in areas with high ozone levels</a>. ",
 }
 
 INFO = {
