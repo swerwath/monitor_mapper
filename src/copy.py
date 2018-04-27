@@ -23,8 +23,8 @@ EJ_EVIDENCE = {
 
 INFO = {
     "PM2.5" : CHEM_NAMES["PM2.5"] + " refers to particulate matter that has a diameter of less than 2.5 micrometers. These fine particles can be emitted from a number of sources, including power plants, motor vehicles, and forest/residential fires. Because " + CHEM_NAMES["PM2.5"] + " particles are so small, they stay in the air for longer than their heavier counterparts, increasing the odds that a human breathes them in. Once they enter the body, the fine particles can penetrate into the lungs and circulatory system. " + HEALTH_RISKS["PM2.5"] + " " + EJ_EVIDENCE["PM2.5"],
-    "SO2" : "Sulfur Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addition to carrying its own health risks, SO<sub>2</sub> in the air can react with other chemicals in the environment to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
-    "NO2" : "Nitrogen Dioxide (NO<sub>2</sub>) is highly reactive gas emitted primarily from the burning of fuel, both from motor vehicles and power plants. NO<sub>2</sub> is a member of and an indicator for a group of chemicals called nitrogen oxides (NO<sub>x</sub>). " + HEALTH_RISKS["NO2"],
+    "SO2" : "Sulfur Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addition to carrying its own health risks, SO<sub>2</sub> can react with other chemicals in the air to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
+    "NO2" : "Nitrogen Dioxide (NO<sub>2</sub>) is a highly reactive gas emitted primarily from the burning of fuel, both from motor vehicles and power plants. NO<sub>2</sub> is a member of and an indicator for a group of chemicals called nitrogen oxides (NO<sub>x</sub>). " + HEALTH_RISKS["NO2"],
     "OZONE" : "Ozone (O<sub>3</sub>) is a gas found both in the upper atmosphere and at ground level. Ground level ozone is not released directly into the air; rather, it is created as a product of chemical reactions between other air pollutants. These chemical reactions are accelerated on hot days, leading to increased ozone levels. " + HEALTH_RISKS["OZONE"] + " " + EJ_EVIDENCE["OZONE"],
 }
 
@@ -36,7 +36,7 @@ LINK = {
 }
 
 DIST_VAR = {
-    "PM2.5" : "While PM<sub>2.5</sub> levels at various stations within a single city tend to be highly correlated, <a href=\"https://doi.org/10.1080/10473289.2004.10470919\">there is still some variation</a> in measurements.",
+    "PM2.5" : "While PM<sub>2.5</sub> levels at various stations within a single city tend to be highly correlated, <a href=\"https://doi.org/10.1080/10473289.2004.10470919\">there is still variation</a> in measurements.",
     "SO2" : "",
     "NO2" : "Since one of main sources of NO<sub>2</sub> is motor vehicles, <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5348563/\">proximity to traffic</a> is a highly predictive of pollution levels. Since motor vehicle traffic varies over time (e.g. \"rush hour\") and air monitoring has low temporal resolution, it's important to keep in mind that NO<sub>2</sub> levels may higher than measured at certain times of day.",
     "OZONE" : "While ozone has <a href=\"https://www.sciencedirect.com/science/article/pii/0004698180900529\">relatively low spatial variation</a> in comparison to other pollutants, its distribution is still heavily dependent on nearby emission sources. If an ozone monitor is upwind of a large emission source, its reading may not be representative of the surrounding area.",
