@@ -109,8 +109,8 @@ function constructMarkerFromMonitor(monitor) {
 
 
 function magnitudeToIconSize(mag) {
-  minS = .3;
-  maxS = .8;
+  minS = .25;
+  maxS = .85;
   size = .5 + mag * .9;
   return Math.max(minS, Math.min(maxS, size));
 }
@@ -118,7 +118,7 @@ function magnitudeToIconSize(mag) {
 function constructMarkerFromFacility(facility) {
   var mag = magnitudeToIconSize(facility.magnitude);
   var facilityIcon = {
-    path: "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z",
+    path: "M48 20h-18v-18h-10v18h-18v10h18v18h10v-18h18z",
     fillColor: "#7C7C7C",
     fillOpacity: .85,
     scale: mag,// magnitudeToIconSize(mag),

@@ -10,22 +10,22 @@ CHEM_NAMES = {
 HEALTH_RISKS = {
     "PM2.5" : "Long-term exposure increases the risk of death from <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/20458016\">heart disease</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/11879110\">lung cancer</a>. Prolonged exporsure can also lead to <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3637008/\">quicker rate of artery thickening</a>, which increases the lifetime risk of developing cardiovascular disease.",
     "SO2" : "Acute short-term exposure to SO<sub>2</sub> can cause breathing difficulty, especially for people with asthma or other vulnerable populations.",
-    "NO2" : "Long-term exposure to NO<sub>2</sub> is suspected to contribute to the development of asthma. Acute exposure can cause irritation of the lungs and aggravate existing respiratory diseases. NO<sub>2</sub> and other NO<sub>x</sub> compounds also lead to the development of acid rain, which can damage important ecosystems.",
-    "OZONE" : "Long-term exposure to ozone increases the chance of lung infection and can lead to the development of asthma, especially in children. Acute short-term exposure can trigger asthma attacks or aggravate chronic bronchitis in people who already have those diseases. It can also cause difficulty of breathing and coughing, even in healthy people.",
-}
-
-INFO = {
-    "PM2.5" : CHEM_NAMES["PM2.5"] + " refers to particulate matter that has a diameter of less than 2.5 micrometers. These fine particles can be emitted from a number of sources, including power plants, motor vehicles, and forest/residential fires. Because " + CHEM_NAMES["PM2.5"] + " particles are so small, they stay in the air for longer than their heavier counterparts, increasing the odds that a human breathes them in. Once they enter the body, the fine particles can penetrate into the lungs and circulatory system. " + HEALTH_RISKS["PM2.5"],
-    "SO2" : "Sulfur Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addition to carrying its own health risks, SO<sub>2</sub> in the air can react with other chemicals in the environment to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
-    "NO2" : "Nitrogen Dioxide (NO<sub>2</sub>) is highly reactive gas emitted primarily from the burning of fuel, both from motor vehicles and power plants. NO<sub>2</sub> is a member of and an indicator for a group of chemicals called nitrogen oxides (NO<sub>x</sub>). " + HEALTH_RISKS["NO2"],
-    "OZONE" : "Ozone (O<sub>3</sub>) is a gas found both in the upper atmosphere and at ground level. Ground level ozone is not released directly into the air; rather, it is created as a product of chemical reactions between other air pollutants. These chemical reactions are accelerated on hot days, leading to increased ozone levels. " + HEALTH_RISKS["OZONE"],
+    "NO2" : "Long-term exposure to NO<sub>2</sub> is suspected to contribute to the development of asthma. Acute exposure can cause <a href=\"https://www.epa.gov/no2-pollution/basic-information-about-no2#Effects\" target=\"_blank\">irritation of the lungs and aggravate existing respiratory diseases</a>. NO<sub>2</sub> and other NO<sub>x</sub> compounds also lead to the development of acid rain, which can damage important ecosystems.",
+    "OZONE" : "Long-term exposure to ozone increases the chance of lung infection and can <a href=\"https://www.epa.gov/ozone-pollution/health-effects-ozone-pollution\" target=\"_blank\">lead to the development of asthma</a>, especially in children. Acute short-term exposure can trigger asthma attacks or aggravate chronic bronchitis in people who already have those diseases. It can also cause difficulty of breathing and coughing, even in healthy people.",
 }
 
 EJ_EVIDENCE = {
-    "PM2.5" : "EJ sentence.",
+    "PM2.5" : "Additionally, PM<sub>2.5</sub> carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\ target=\"_blank\">are more likely to live in areas with high PM<sub>2.5</sub> levels</a>. ",
     "SO2" : "",
     "NO2" : "",
-    "OZONE" : "EJ Sentence.",
+    "OZONE" : "Additionally, ozone carries environmental justice concerns, since people of color in the US <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3137995/\ target=\"_blank\">are more likely to live in areas with high ozone levels</a>. ",
+}
+
+INFO = {
+    "PM2.5" : CHEM_NAMES["PM2.5"] + " refers to particulate matter that has a diameter of less than 2.5 micrometers. These fine particles can be emitted from a number of sources, including power plants, motor vehicles, and forest/residential fires. Because " + CHEM_NAMES["PM2.5"] + " particles are so small, they stay in the air for longer than their heavier counterparts, increasing the odds that a human breathes them in. Once they enter the body, the fine particles can penetrate into the lungs and circulatory system. " + HEALTH_RISKS["PM2.5"] + " " + EJ_EVIDENCE["PM2.5"],
+    "SO2" : "Sulfur Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addition to carrying its own health risks, SO<sub>2</sub> in the air can react with other chemicals in the environment to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
+    "NO2" : "Nitrogen Dioxide (NO<sub>2</sub>) is highly reactive gas emitted primarily from the burning of fuel, both from motor vehicles and power plants. NO<sub>2</sub> is a member of and an indicator for a group of chemicals called nitrogen oxides (NO<sub>x</sub>). " + HEALTH_RISKS["NO2"],
+    "OZONE" : "Ozone (O<sub>3</sub>) is a gas found both in the upper atmosphere and at ground level. Ground level ozone is not released directly into the air; rather, it is created as a product of chemical reactions between other air pollutants. These chemical reactions are accelerated on hot days, leading to increased ozone levels. " + HEALTH_RISKS["OZONE"] + " " + EJ_EVIDENCE["OZONE"],
 }
 
 LINK = {
@@ -79,9 +79,8 @@ def get_copy(chem, nearest_monitors):
         dist = "It looks like <b>there are no " + CHEM_NAMES[chem] + " monitors in your area!</b> Why does this matter? " + \
         " Since you don't live by any " + CHEM_NAMES[chem] + \
         " monitoring stations, there is no way for public health officials to estimate the exposure of people in your community. " + \
-        EJ_EVIDENCE[chem] + " If you're concerned about the lack of " + CHEM_NAMES[chem] + " monitoring in your community, you can " + \
-        "learn more about " + CHEM_NAMES[chem] + " <a href=\"" + LINK[chem] + "\" target=\"_blank\">here</a>, or keep scrolling to get involved " + \
-        "with community air monitoring efforts and your local air district."
+        EJ_EVIDENCE[chem] + "If you're concerned about the lack of " + CHEM_NAMES[chem] + " monitoring in your community, you can " + \
+        "learn more about " + CHEM_NAMES[chem] + " using the link below, or keep scrolling to get involved with community air monitoring efforts and your local air district."
         read = ""
     else:
         d = nearest_monitors[chem][1]
