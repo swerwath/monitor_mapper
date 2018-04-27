@@ -10,13 +10,13 @@ CHEM_NAMES = {
 HEALTH_RISKS = {
     "PM2.5" : "Long-term exposure increases the risk of death from <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/20458016\">heart disease</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/11879110\">lung cancer</a>. Prolonged exporsure can also lead to <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3637008/\">quicker rate of artery thickening</a>, which increases the lifetime risk of developing cardiovascular disease.",
     "SO2" : "Acute short-term exposure to SO<sub>2</sub> can cause breathing difficulty, especially for people with asthma or other vulnerable populations.",
-    "NO2" : "Long-term exposire to NO<sub>2</sub> is suspected to contribute to the development of asthma. Acute exposure can cause irration of the lungs and aggrevate existing respiratory diseases. NO<sub>2</sub> and other NO<sub>x</sub> compunds also lead to the development of acid rain, which can damage important ecosystems.",
-    "OZONE" : "Long-term exposure to ozone increases the chance of lung infection and can lead to the development of asthma, espcially in children. Acute short-term exposure can trigger asthma attacks or aggravate chronic bronchitis in people who already have those diseases. It can also cause difficulty of breathing and coughing, even in healthy people.",
+    "NO2" : "Long-term exposure to NO<sub>2</sub> is suspected to contribute to the development of asthma. Acute exposure can cause irritation of the lungs and aggravate existing respiratory diseases. NO<sub>2</sub> and other NO<sub>x</sub> compounds also lead to the development of acid rain, which can damage important ecosystems.",
+    "OZONE" : "Long-term exposure to ozone increases the chance of lung infection and can lead to the development of asthma, especially in children. Acute short-term exposure can trigger asthma attacks or aggravate chronic bronchitis in people who already have those diseases. It can also cause difficulty of breathing and coughing, even in healthy people.",
 }
 
 INFO = {
     "PM2.5" : CHEM_NAMES["PM2.5"] + " refers to particulate matter that has a diameter of less than 2.5 micrometers. These fine particles can be emitted from a number of sources, including power plants, motor vehicles, and forest/residential fires. Because " + CHEM_NAMES["PM2.5"] + " particles are so small, they stay in the air for longer than their heavier counterparts, increasing the odds that a human breathes them in. Once they enter the body, the fine particles can penetrate into the lungs and circulatory system. " + HEALTH_RISKS["PM2.5"],
-    "SO2" : "Sulfer Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addtion to carrying its own health risks, SO<sub>2</sub> in the air can react with other chemicals in the environment to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
+    "SO2" : "Sulfur Dioxide (SO<sub>2</sub>) is an air pollutant released primarily from the burning of fossil fuels at power plants and large industrial facilities. In addition to carrying its own health risks, SO<sub>2</sub> in the air can react with other chemicals in the environment to form PM<sub>2.5</sub> particulate matter (see above). " + HEALTH_RISKS["SO2"],
     "NO2" : "Nitrogen Dioxide (NO<sub>2</sub>) is highly reactive gas emitted primarily from the burning of fuel, both from motor vehicles and power plants. NO<sub>2</sub> is a member of and an indicator for a group of chemicals called nitrogen oxides (NO<sub>x</sub>). " + HEALTH_RISKS["NO2"],
     "OZONE" : "Ozone (O<sub>3</sub>) is a gas found both in the upper atmosphere and at ground level. Ground level ozone is not released directly into the air; rather, it is created as a product of chemical reactions between other air pollutants. These chemical reactions are accelerated on hot days, leading to increased ozone levels. " + HEALTH_RISKS["OZONE"],
 }
@@ -38,7 +38,7 @@ LINK = {
 DIST_VAR = {
     "PM2.5" : "While PM<sub>2.5</sub> levels at various stations within a single city tend to be highly correlated, <a href=\"https://doi.org/10.1080/10473289.2004.10470919\">there is still some variation</a> in measurements.",
     "SO2" : "",
-    "NO2" : "Since one of main sources of NO<sub>2</sub> is motor vehicles, <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5348563/\">proximity to traffic</a> is a highly predictive of pollution levels. Since motor vehivle traffic varies over time (e.g. \"rush hour\") and air monitoring has low temporal resolution, it's important to keep in mind that NO<sub>2</sub> levels may higher than measured at certain times of day.",
+    "NO2" : "Since one of main sources of NO<sub>2</sub> is motor vehicles, <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5348563/\">proximity to traffic</a> is a highly predictive of pollution levels. Since motor vehicle traffic varies over time (e.g. \"rush hour\") and air monitoring has low temporal resolution, it's important to keep in mind that NO<sub>2</sub> levels may higher than measured at certain times of day.",
     "OZONE" : "While ozone has <a href=\"https://www.sciencedirect.com/science/article/pii/0004698180900529\">relatively low spatial variation</a> in comparison to other pollutants, its distribution is still heavily dependent on nearby emission sources. If an ozone monitor is upwind of a large emission source, its reading may not be representative of the surrounding area.",
 }
 
@@ -58,7 +58,7 @@ def dist_copy(dist, chem):
 def aqi_copy(aqi, chem_name):
     copy = "The <b>Air Quality Index</b> (AQI) is a number that tells you how much of a certain " + \
     "chemical is in the air, and if that level of pollution carries any potential health concerns. " + \
-    "Based on the nearest availible monitoring station, the estimated AQI for " + chem_name + " near you is " + str(aqi) + ", "
+    "Based on the nearest available monitoring station, the estimated AQI for " + chem_name + " near you is " + str(aqi) + ", "
 
     if aqi < 51:
         copy += "which the EPA classifies as <font color=\"green\">good</font>. This means that levels of " + chem_name + " are low, and air pollution poses little to no health risks for long periods of exposure."
