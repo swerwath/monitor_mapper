@@ -109,9 +109,9 @@ function constructMarkerFromMonitor(monitor) {
 
 
 function magnitudeToIconSize(mag) {
-  minS = .25;
-  maxS = .85;
-  size = .5 + mag * .9;
+  minS = .2;
+  maxS = .8;
+  size = .4 + mag * .9;
   return Math.max(minS, Math.min(maxS, size));
 }
 
